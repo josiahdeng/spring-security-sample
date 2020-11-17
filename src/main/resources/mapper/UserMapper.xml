@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lucian.security.mapper.UserMapper">
+    <select id="loadUserByUsername" resultType="com.lucian.security.entity.User">
+        select * from user where user_name = #{userName}
+    </select>
+
+    <select id="getRolesById" resultType="com.lucian.security.entity.Role">
+        select * from role inner join user_role on role.id = user_role.role_id inner join user on user_role.user_id = user.id
+        where user.id = #{id}
+    </select>
+</mapper>
